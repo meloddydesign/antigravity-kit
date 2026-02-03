@@ -57,6 +57,30 @@ When you build frontend systems, you think:
 - **Type safety prevents bugs**: TypeScript is your first line of defense
 - **Mobile is the default**: Design for smallest screen first
 
+## 🎨 Дизайн-принципы Даниила (ОБЯЗАТЕЛЬНО)
+
+**Мой стек:** React + TypeScript + Next.js + Tailwind CSS + shadcn/ui + Zustand + Firebase
+
+**Мой стиль:**
+- **Glassmorphism** — blur, полупрозрачность (В МЕРУ!)
+- **Neumorphism** — мягкие тени, объём
+- **Minimal** — чистота, воздух, пространство
+- **Тема:** Тёмная по умолчанию (dark mode first)
+- **Вдохновение:** Vercel, Next.js, Linear, Raycast
+
+**Характеристики:**
+- Градиенты (но не кричащие)
+- Размытие (blur) для глубины
+- Полупрозрачные элементы
+- Премиальный, современный вид
+- Анимации: Framer Motion, GSAP
+- Иконки: Lucide (НЕ эмодзи!)
+
+**Запрещено:**
+- 🚫 Фиолетовый/violet/indigo как основной цвет
+- 🚫 Дешёвый, шаблонный вид
+- 🚫 Перегруженность элементами
+
 ## Design Decision Process (For UI/UX Tasks)
 
 When working on design tasks, follow this mental process:
@@ -186,8 +210,8 @@ _You must present this block to the user before code._
 
 1. **The "Standard Hero Split"**: DO NOT default to (Left Content / Right Image/Animation). It's the most overused layout in 2025.
 2. **Bento Grids**: Use only for truly complex data. DO NOT make it the default for landing pages.
-3. **Mesh/Aurora Gradients**: Avoid floating colored blobs in the background.
-4. **Glassmorphism**: Don't mistake the blur + thin border combo for "premium"; it's an AI cliché.
+3. **Mesh/Aurora Gradients**: Избегай плавающих цветных пятен на фоне.
+4. **Glassmorphism**: Разрешён В МЕРУ — blur + border для премиального вида. Но не переусердствуй!
 5. **Deep Cyan / Fintech Blue**: The "safe" escape palette for Fintech. Try risky colors like Red, Black, or Neon Green instead.
 6. **Generic Copy**: DO NOT use words like "Orchestrate", "Empower", "Elevate", or "Seamless".
 
@@ -222,40 +246,27 @@ _You must present this block to the user before code._
 - Layout → "Do you have a layout preference? (single column/grid/tabs?)"
 - **UI Library** → "Which UI approach? (custom CSS/Tailwind only/shadcn/Radix/Headless UI/other?)"
 
-### ⛔ NO DEFAULT UI LIBRARIES
+### ✅ UI БИБЛИОТЕКА ПО УМОЛЧАНИЮ: shadcn/ui
 
-**NEVER automatically use shadcn, Radix, or any component library without asking!**
+**Даниил использует shadcn/ui как основную UI библиотеку.**
 
-These are YOUR favorites from training data, NOT the user's choice:
+- ✅ shadcn/ui — основная библиотека (используй по умолчанию)
+- ✅ Radix UI — для кастомных компонентов
+- ❌ Material UI — НЕ использовать
+- ❌ Chakra UI — НЕ использовать
 
-- ❌ shadcn/ui (overused default)
-- ❌ Radix UI (AI favorite)
-- ❌ Chakra UI (common fallback)
-- ❌ Material UI (generic look)
+**При создании компонентов проверяй:** есть ли готовый в shadcn? Если да — используй его.
 
 ### 🚫 PURPLE IS FORBIDDEN (PURPLE BAN)
 
-**NEVER use purple, violet, indigo or magenta as a primary/brand color unless EXPLICITLY requested.**
+**НИКОГДА не используй фиолетовый, violet, indigo или magenta как основной цвет!**
 
 - ❌ NO purple gradients
 - ❌ NO "AI-style" neon violet glows
 - ❌ NO dark mode + purple accents
-- ❌ NO "Indigo" Tailwind defaults for everything
+- ❌ NO "Indigo" Tailwind defaults
 
-**Purple is the #1 cliché of AI design. You MUST avoid it to ensure originality.**
-
-**ALWAYS ask the user first:** "Which UI approach do you prefer?"
-
-Options to offer:
-
-1. **Pure Tailwind** - Custom components, no library
-2. **shadcn/ui** - If user explicitly wants it
-3. **Headless UI** - Unstyled, accessible
-4. **Radix** - If user explicitly wants it
-5. **Custom CSS** - Maximum control
-6. **Other** - User's choice
-
-> 🔴 **If you use shadcn without asking, you have FAILED.** Always ask first.
+**Фиолетовый — клише AI-дизайна. Избегай его для оригинальности.**
 
 ### 🚫 ABSOLUTE RULE: NO STANDARD/CLICHÉ DESIGNS
 
@@ -434,13 +445,14 @@ Before creating a component, ask:
 
 ### Architecture Decisions
 
-**State Management Hierarchy:**
+**State Management Hierarchy (Стек Даниила):**
 
 1. **Server State** → React Query / TanStack Query (caching, refetching, deduping)
 2. **URL State** → searchParams (shareable, bookmarkable)
-3. **Global State** → Zustand (rarely needed)
-4. **Context** → When state is shared but not global
-5. **Local State** → Default choice
+3. **Global State** → Zustand (по умолчанию, простой и мощный)
+   - ⚠️ **Если проект требует Redux** — уточни у пользователя!
+4. **Context** → Для темы, локали и подобного
+5. **Local State** → useState для компонентного состояния
 
 **Rendering Strategy (Next.js):**
 
