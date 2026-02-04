@@ -2,9 +2,32 @@
 trigger: always_on
 ---
 
-# GEMINI.md - Antigravity Kit
+# GEMINI.md - Antigravity Kit (Персонализированный)
 
-> This file defines how the AI behaves in this workspace.
+> Правила для AI в этом workspace. Адаптировано под стек Даниила.
+
+---
+
+## 🎯 ПЕРСОНАЛЬНЫЕ НАСТРОЙКИ (ПРИОРИТЕТ P0)
+
+**Владелец:** Даниил (Junior Frontend Engineer)
+**Язык общения:** Русский
+**Комментарии в коде:** На русском!
+
+**Стек:**
+- React + TypeScript
+- Next.js (по запросу)
+- Tailwind CSS + shadcn/ui
+- Zustand (Redux если проект требует)
+- Firebase
+- Framer Motion / GSAP
+
+**Дизайн:**
+- Glassmorphism + Neumorphism + Minimal
+- Тёмная тема по умолчанию
+- Вдохновение: Vercel, Linear, Raycast
+- 🚫 Purple Ban — фиолетовый запрещён!
+- 🚫 Шаблонные дизайны запрещены
 
 ---
 
@@ -97,11 +120,12 @@ When auto-applying an agent, inform the user:
 
 ### 🌐 Language Handling
 
-When user's prompt is NOT in English:
+Когда пользователь пишет НЕ на английском:
 
-1. **Internally translate** for better comprehension
-2. **Respond in user's language** - match their communication
-3. **Code comments/variables** remain in English
+1. **Внутренне переводи** для лучшего понимания
+2. **Отвечай на языке пользователя** — Даниилу на русском!
+3. **Комментарии в коде:** НА РУССКОМ (по правилам Даниила)
+4. **Переменные/функции:** на английском (camelCase)
 
 ### 🧹 Clean Code (Global Mandatory)
 
@@ -152,10 +176,11 @@ When user's prompt is NOT in English:
 | Project Type                           | Primary Agent         | Skills                        |
 | -------------------------------------- | --------------------- | ----------------------------- |
 | **MOBILE** (iOS, Android, RN, Flutter) | `mobile-developer`    | mobile-design                 |
-| **WEB** (Next.js, React web)           | `frontend-specialist` | frontend-design               |
-| **BACKEND** (API, server, DB)          | `backend-specialist`  | api-patterns, database-design |
+| **WEB** (Next.js, React web)           | `frontend-specialist` | frontend-design, react-best-practices, tailwind-patterns |
+| **BACKEND** (API, server, Node.js)     | `backend-specialist`  | api-patterns, nodejs-best-practices |
 
 > 🔴 **Mobile + frontend-specialist = WRONG.** Mobile = mobile-developer ONLY.
+> 🔴 **Даниил = WEB.** Используй `frontend-specialist` по умолчанию.
 
 ### 🛑 Socratic Gate
 
@@ -182,7 +207,7 @@ When user's prompt is NOT in English:
 
 ### 🏁 Final Checklist Protocol
 
-**Trigger:** When the user says "son kontrolleri yap", "final checks", "çalıştır tüm testleri", or similar phrases.
+**Trigger:** Когда пользователь говорит "финальные проверки", "final checks", "проверь всё" и подобное.
 
 | Task Stage       | Command                                            | Purpose                        |
 | ---------------- | -------------------------------------------------- | ------------------------------ |
@@ -198,22 +223,16 @@ When user's prompt is NOT in English:
 - **Completion:** A task is NOT finished until `checklist.py` returns success.
 - **Reporting:** If it fails, fix the **Critical** blockers first (Security/Lint).
 
-**Available Scripts (12 total):**
+**Available Scripts (актуальные):**
 
 | Script                     | Skill                 | When to Use         |
 | -------------------------- | --------------------- | ------------------- |
-| `security_scan.py`         | vulnerability-scanner | Always on deploy    |
-| `dependency_analyzer.py`   | vulnerability-scanner | Weekly / Deploy     |
 | `lint_runner.py`           | lint-and-validate     | Every code change   |
-| `test_runner.py`           | testing-patterns      | After logic change  |
-| `schema_validator.py`      | database-design       | After DB change     |
 | `ux_audit.py`              | frontend-design       | After UI change     |
 | `accessibility_checker.py` | frontend-design       | After UI change     |
 | `seo_checker.py`           | seo-fundamentals      | After page change   |
 | `bundle_analyzer.py`       | performance-profiling | Before deploy       |
-| `mobile_audit.py`          | mobile-design         | After mobile change |
 | `lighthouse_audit.py`      | performance-profiling | Before deploy       |
-| `playwright_runner.py`     | webapp-testing        | Before deploy       |
 
 > 🔴 **Agents & Skills can invoke ANY script** via `python .agent/skills/<skill>/scripts/<script>.py`
 
@@ -223,7 +242,7 @@ When user's prompt is NOT in English:
 | -------- | ----------------- | -------------------------------------------- |
 | **plan** | `project-planner` | 4-phase methodology. NO CODE before Phase 4. |
 | **ask**  | -                 | Focus on understanding. Ask questions.       |
-| **edit** | `orchestrator`    | Execute. Check `{task-slug}.md` first.       |
+| **edit** | `frontend-specialist` | Execute. Check `{task-slug}.md` first.   |
 
 **Plan Mode (4-Phase):**
 
@@ -258,16 +277,24 @@ When user's prompt is NOT in English:
 
 ## 📁 QUICK REFERENCE
 
-### Agents & Skills
+### Агенты (12 шт)
 
-- **Masters**: `orchestrator`, `project-planner`, `security-auditor` (Cyber/Audit), `backend-specialist` (API/DB), `frontend-specialist` (UI/UX), `mobile-developer`, `debugger`, `game-developer`
-- **Key Skills**: `clean-code`, `brainstorming`, `app-builder`, `frontend-design`, `mobile-design`, `plan-writing`, `behavioral-modes`
+- **Frontend:** `frontend-specialist` (основной для Даниила)
+- **Backend:** `backend-specialist`
+- **Mobile:** `mobile-developer`
+- **Debug:** `debugger`
+- **Planning:** `project-planner`
+- **Performance:** `performance-optimizer`
+- **Docs:** `documentation-writer`
+- **SEO:** `seo-specialist`
+- **Explore:** `explorer-agent`, `code-archaeologist`
+- **Product:** `product-manager`, `product-owner`
 
-### Key Scripts
+### Ключевые скиллы
 
-- **Verify**: `.agent/scripts/verify_all.py`, `.agent/scripts/checklist.py`
-- **Scanners**: `security_scan.py`, `dependency_analyzer.py`
-- **Audits**: `ux_audit.py`, `mobile_audit.py`, `lighthouse_audit.py`, `seo_checker.py`
-- **Test**: `playwright_runner.py`, `test_runner.py`
+- **Code:** `clean-code`, `react-best-practices`, `tailwind-patterns`
+- **Design:** `frontend-design`, `mobile-design`, `web-design-guidelines`
+- **Planning:** `brainstorming`, `plan-writing`, `architecture`
+- **Docs:** `documentation-templates`, `seo-fundamentals`
 
 ---
